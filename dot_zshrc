@@ -1,0 +1,23 @@
+# ZSH config directory
+ZSH_CONFIG_DIR="$HOME/.zshrc.d"
+
+# Source variables config
+source "$ZSH_CONFIG_DIR/variables.sh"
+
+# Source path config
+source "$ZSH_CONFIG_DIR/path_config.sh"
+
+# Source aliases config
+source "$ZSH_CONFIG_DIR/aliases.sh"
+
+# Source./.zsh completions
+source "$ZSH_CONFIG_DIR/completions.sh"
+
+# Source custom./.zsh functions
+source "$ZSH_CONFIG_DIR/custom_functions.sh"
+
+## Evaluations (scripts that need to be executed during./.zsh startup eg. starship)
+source $ZSH/oh-my-zsh.sh # OhMyzSH install
+eval "$(starship init zsh)" # Starship init
+source <(fzf --zsh) # Set up fzf key bindings and fuzzy completion
+
