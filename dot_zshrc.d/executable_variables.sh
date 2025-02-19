@@ -35,6 +35,9 @@ export PNPM_HOME="/Users/ezra/Library/pnpm"
 export ASDF_DATA_DIR="/Users/ezra/.asdf"
 
 # Android SDK Variables
-export ANDROID_HOME=$HOME/Library/Android/sdk
+export ANDROID_HOME="$HOME/Library/Android/sdk"
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+# Chezmoi Home Directory
+export CHEZMOI_HOME="$HOME/.local/share/chezmoi"
