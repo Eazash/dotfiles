@@ -41,5 +41,8 @@ append_to_path "$ASDF_DATA_DIR/shims"
 # Mysql client
 append_to_path "/opt/homebrew/opt/mysql-client/bin"
 
+# Bin folder used by pipx
+append_to_path "$HOME/.local/bin"
+
 # Export built PATH variable once
 export PATH
