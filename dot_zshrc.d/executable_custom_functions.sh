@@ -9,8 +9,8 @@ function getEBENV { aws elasticbeanstalk describe-configuration-settings --appli
 export -f getEBENV >/dev/null 2>&1
 
 # Convert JSON output from beanstalk cli to env string
-function beanstalk_option_to_json { jq -rS '"\(.OptionName)=\(.Value)"' | sort }
-export -f beanstalk_option_to_json >/dev/null 2>&1
+function beanstalk_option_to_env { jq -rS '"\(.OptionName)=\(.Value)"' | sort }
+export -f beanstalk_option_to_env >/dev/null 2>&1
 
 # Update the environment variables for a beanstalk environment
 function updateEBENV { aws elasticbeanstalk update-environment --environment-name $1 --option-settings $2 }
