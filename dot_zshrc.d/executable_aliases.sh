@@ -5,7 +5,11 @@ alias vi="nvim"
 # ZSHRC aliases
 alias szrc="source ~/.zshrc" # Source
 alias vzrc="vim ~/.zshrc" # Open for editing
+alias vzrcd="vim ~/.zshrc.d" # Open ZSH source dir for editing
 alias czrc="bat ~/.zshrc" # Print contents with bat
+
+# SSH config aliases
+alias vssh="vim ~/.ssh/config" # Open ssh config for editing 
 
 # grep aliases
 alias aligrep="alias | grep" # Grep aliases, useful to search through oh-my-zsh aliases
