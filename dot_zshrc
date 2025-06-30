@@ -21,3 +21,24 @@ source $ZSH/oh-my-zsh.sh # OhMyzSH install
 eval "$(starship init zsh)" # Starship init
 source <(fzf --zsh) # Set up fzf key bindings and fuzzy completion
 
+__nr_debug()
+{
+    local file="$BASH_COMP_DEBUG_FILE"
+    if [[ -n ${file} ]]; then
+        echo "$*" >> "${file}"
+    fi
+}
+
+_nr(){
+  __nr_debug "Starting completions for nr in zsh" 
+  __nr_debug "Received count of words: ${#words[@]}"
+  __nr_debug "Full line: ${words[*]}"
+  __nr_debug "Current cursor index: ${CURRENT}"
+
+  # Set COMP_CWORD to one less than the actual current index (since the first word is the command itself)
+  out=($(COMP_CWORD=$((${CURRENT} - 1)) COMP_LINE="${words[@]}" nr --completion "${words[@]}"))
+  __nr_debug "Output : ${out}"
+  compadd -a out
+}
+
+compdef _nr nr
