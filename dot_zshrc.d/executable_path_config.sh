@@ -6,7 +6,7 @@ append_to_path() {
         *) PATH="$PATH:$1" ;;
     esac
 }
-# PATH="~/opt/bin"   # prepending
+# PATH="~/opt/bin:$PATH"   # prepending
 prepend_to_path() {
     case ":" in
         *":$1:"*) ;;
@@ -15,13 +15,11 @@ prepend_to_path() {
 }
 
 # Add pnpm home directory to path (where global installs live)
-case ":" in
-  *":$PNPM_HOME:"*) ;;
-  *) append_to_path "$PNPM_HOME" ;;
-esac
+append_to_path "$PNPM_HOME" 
 
  # Android platform tools (eg. adb)
-append_to_path "/Users/ezra/Library/Android/sdk/platform-tools"
+append_to_path "$ANDROID_HOME/emulator"
+append_to_path "$ANDROID_HOME/platform-tools"
 
 # Brew - PHP Setup
 append_to_path "/opt/homebrew/opt/php@8.1/bin"
@@ -33,16 +31,14 @@ append_to_path "/opt/homebrew/opt/libpq/bin"
 # Wezterm
 prepend_to_path "/Applications/WezTerm.app/Contents/MacOS"
 
-# Place ASDF bin to front of path (it's installed in $HOME/bin)
-append_to_path "$HOME/bin"
-# Add ASDF shims to front of path
-append_to_path "$ASDF_DATA_DIR/shims"
-
 # Mysql client
 append_to_path "/opt/homebrew/opt/mysql-client/bin"
 
 # Bin folder used by pipx
 append_to_path "$HOME/.local/bin"
+
+# Sqlite
+prepend_to_path "/opt/homebrew/opt/sqlite/bin"
 
 # Export built PATH variable once
 export PATH
