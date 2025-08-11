@@ -46,3 +46,8 @@ function get_tg_url {
   fi
 }
 export get_tg_url >/dev/null 2>&1
+
+function run_with_brk() {
+  NODE_OPTIONS="--inspect-brk" "$@"
+}
+export run_with_brk >/dev/null 2>&1
