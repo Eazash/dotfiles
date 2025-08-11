@@ -36,3 +36,13 @@ export -f aws_ecr_url >/dev/null 2>&1
 function docker_ecr_login { aws ecr get-login-password --region "$(aws_default_region)" | docker login --username AWS --password-stdin "$(aws_ecr_url)" }
 export -f docker_ecr_login >/dev/null 2>&1
 
+# Telegram Bot API helpers
+function get_tg_url { 
+  if [ -v TG_TOKEN ] && [ -n "${TG_TOKEN}" ]; then
+	echo "https://api.telegram.org/bot${TG_TOKEN}";
+  else
+   echo '"TG_TOKEN" environment must be set and non-empty';
+   exit 1
+  fi
+}
+export get_tg_url >/dev/null 2>&1
