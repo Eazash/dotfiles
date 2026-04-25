@@ -26,3 +26,6 @@ alias npx="nlx"
 
 # Docker alias for terse output
 alias dpss="docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}'"
+
+# Docker alias for listing only running container names
+alias dpsn="docker ps --format '{{.Names}}'"

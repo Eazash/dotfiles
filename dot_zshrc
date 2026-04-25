@@ -20,58 +20,18 @@ source "$ZSH_CONFIG_DIR/custom_functions.sh"
 ## Evaluations (scripts that need to be executed during./.zsh startup eg. starship)
 source $ZSH/oh-my-zsh.sh # OhMyzSH install
 eval "$(starship init zsh)" # Starship init
-source <(fzf --zsh) # Set up fzf key bindings and fuzzy completion
+FZF_CTRL_R_COMMAND= FZF_ALT_C_COMMAND= source <(fzf --zsh) # Set up fzf key bindings and fuzzy completion
 
-__nr_debug()
-{
-    local file="$BASH_COMP_DEBUG_FILE"
-    if [[ -n ${file} ]]; then
-        echo "$*" >> "${file}"
-    fi
-}
-
-_nr(){
-  __nr_debug "Starting completions for nr in zsh" 
-  __nr_debug "Received count of words: ${#words[@]}"
-  __nr_debug "Full line: ${words[*]}"
-  __nr_debug "Current cursor index: ${CURRENT}"
-
-  # Set COMP_CWORD to one less than the actual current index (since the first word is the command itself)
-  out=($(COMP_CWORD=$((${CURRENT} - 1)) COMP_LINE="${words[@]}" nr --completion "${words[@]}"))
-  __nr_debug "Output : ${out}"
-  compadd -a out
-}
-
-compdef _nr nr
+# Source Rust
+. "$HOME/.cargo/env"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 eval "$(mise activate zsh --shims)"
-#compdef pnpm
-###-begin-pnpm-completion-###
-if type compdef &>/dev/null; then
-  _pnpm_completion () {
-    local reply
-    local si=$IFS
 
-    IFS=$'\n' reply=($(COMP_CWORD="$((CURRENT-1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" SHELL=zsh pnpm completion-server -- "${words[@]}"))
-    IFS=$si
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/ezra/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
-    if [ "$reply" = "__tabtab_complete_files__" ]; then
-      _files
-    else
-      _describe 'values' reply
-    fi
-  }
-  # When called by the Zsh completion system, this will end with
-  # "loadautofunc" when initially autoloaded and "shfunc" later on, otherwise,
-  # the script was "eval"-ed so use "compdef" to register it with the
-  # completion system
-  if [[ $zsh_eval_context == *func ]]; then
-    _pnpm_completion "$@"
-  else
-    compdef _pnpm_completion pnpm
-  fi
-fi
-###-end-pnpm-completion-###
-
+# Vite+ bin (https://viteplus.dev)
+. "$HOME/.vite-plus/env"

@@ -38,11 +38,12 @@ export -f docker_ecr_login >/dev/null 2>&1
 
 # Telegram Bot API helpers
 function get_tg_url { 
-  if [ -v TG_TOKEN ] && [ -n "${TG_TOKEN}" ]; then
-	echo "https://api.telegram.org/bot${TG_TOKEN}";
+  local token="${1:-${TG_TOKEN}}"
+  if [[ -n "${token}" ]]; then
+	echo "https://api.telegram.org/bot${token}";
   else
-   echo '"TG_TOKEN" environment must be set and non-empty';
-   exit 1
+	echo 'Usage: get_tg_url <TG_TOKEN>\nNote: "TG_TOKEN" can also be set as an environment variable';
+	return 1
   fi
 }
 export get_tg_url >/dev/null 2>&1

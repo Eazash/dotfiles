@@ -9,7 +9,7 @@ ZSH_THEME="robbyrussell"
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(aws git chucknorris brew docker docker-compose node macos sudo pod z vscode)
+plugins=(aws git brew docker docker-compose node macos sudo terraform z vscode)
 
 # How often to auto-update oh-my-zsh (in days).
 zstyle ':omz:update' frequency 15
@@ -38,3 +38,6 @@ export ASDF_DATA_DIR="/Users/ezra/.asdf"
 export ANDROID_HOME="$HOME/Library/Android/sdk"
 # Chezmoi Home Directory
 export CHEZMOI_HOME="$HOME/.local/share/chezmoi"
+
+# Auto run venv
+export PYTHON_AUTO_VRUN="true"
