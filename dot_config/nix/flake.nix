@@ -34,6 +34,22 @@
           # Enable alternative shell support in nix-darwin.
           # programs.fish.enable = true;
 
+          programs.zsh = {
+            enable = true;
+            enableCompletion = true;
+            enableBashCompletion = true;
+            autosuggestions.enable = true;
+            syntaxHighlighting.enable = true;
+            histSize = 10000;
+            setOptions = [
+              "AUTO_CD"
+            ];
+            ohMyZsh = {
+              enable = true;
+            };
+          };
+          users.defaultUserShell = pkgs.zsh;
+
           # Set Git commit hash for darwin-version.
           system.configurationRevision = self.rev or self.dirtyRev or null;
 
@@ -172,13 +188,13 @@
               # Command-line benchmarking tool
               "hyperfine"
               # API Support for your favorite torrent trackers
-              "jackett", restart_service: :changed
+              "jackett"
               # Lightweight and flexible command-line JSON processor
               "jq"
               # Lazier way to manage everything docker
               "lazydocker"
               # Postgres C API library
-              "libpq", link: true
+              "libpq"
               # Control external displays (USB-C/DisplayPort Alt Mode) using DDC/CI on M1 Macs
               "m1ddc"
               # Show markdown documents on text terminals
@@ -302,7 +318,7 @@
               # All-in-one office suite
               "wpsoffice"
             ];
-            enableZshIntegration = true
+            enableZshIntegration = true;
           };
         };
     in
