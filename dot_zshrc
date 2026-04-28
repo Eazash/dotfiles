@@ -23,7 +23,7 @@ eval "$(starship init zsh)" # Starship init
 FZF_CTRL_R_COMMAND= FZF_ALT_C_COMMAND= source <(fzf --zsh) # Set up fzf key bindings and fuzzy completion
 
 # Source Rust
-. "$HOME/.cargo/env"
+test -e "${HOME}/.cargo.env" && source "$HOME/.cargo/env"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -34,4 +34,4 @@ export PATH="/Users/ezra/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
 # Vite+ bin (https://viteplus.dev)
-. "$HOME/.vite-plus/env"
+test -e "${HOME}/.vite-plus/env" && source "$HOME/.vite-plus/env"
