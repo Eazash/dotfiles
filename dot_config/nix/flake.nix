@@ -1,6 +1,5 @@
 {
   description = "system flake";
-
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
@@ -26,6 +25,7 @@
             pkgs.vim
             pkgs.nixd
             pkgs.nixfmt
+            pkgs.mas
           ];
 
           # Necessary for using flakes on this system.
@@ -38,17 +38,10 @@
             enable = true;
             enableCompletion = true;
             enableBashCompletion = true;
-            autosuggestions.enable = true;
-            syntaxHighlighting.enable = true;
+            enableAutosuggestions = true;
+            enableSyntaxHighlighting = true;
             histSize = 10000;
-            setOptions = [
-              "AUTO_CD"
-            ];
-            ohMyZsh = {
-              enable = true;
-            };
           };
-          users.defaultUserShell = pkgs.zsh;
 
           # Set Git commit hash for darwin-version.
           system.configurationRevision = self.rev or self.dirtyRev or null;
@@ -68,8 +61,24 @@
 
           # Sensible system defaults
           system.defaults = {
-            dock.autohide = true;
-            dock.mru-spaces = false;
+            dock = {
+              autohide = true;
+              mineffect = "scale";
+              mru-spaces = false;
+              show-recents = false;
+              persistent-apps = [
+                "/System/Applications/Apps.app"
+                "/Applications/Brave Browser.app"
+                "/Applications/iTerm.app"
+                "/Applications/Visual Studio Code.app"
+                "/Applications/Spotify.app"
+                "/Applications/Telegram.app"
+                "/Applications/Linear.app"
+                "/Applications/Discord.app"
+                "/System/Applications/Mail.app"
+                "/System/Applications/Calendar.app"
+              ];
+            };
             finder.AppleShowAllExtensions = true;
             finder.FXPreferredViewStyle = "clmv";
             loginwindow.LoginwindowText = "nixcademy.com";
@@ -84,13 +93,10 @@
               "aws/tap"
               "circleci-public/circleci"
               "dart-lang/dart"
-              "gromgit/fuse"
-              "homebrew/services"
               "leoafarias/fvm"
               "libsql/sqld"
               "nikitabobko/tap"
               "oven-sh/bun"
-              "peaceiris/tap"
               "sst/tap"
               "stripe/stripe-cli"
               "supabase/tap"
@@ -188,13 +194,19 @@
               # Command-line benchmarking tool
               "hyperfine"
               # API Support for your favorite torrent trackers
-              "jackett"
+              {
+                name = "jackett";
+                restart_service = "changed";
+              }
               # Lightweight and flexible command-line JSON processor
               "jq"
               # Lazier way to manage everything docker
               "lazydocker"
               # Postgres C API library
-              "libpq"
+              {
+                name = "libpq";
+                link = true;
+              }
               # Control external displays (USB-C/DisplayPort Alt Mode) using DDC/CI on M1 Macs
               "m1ddc"
               # Show markdown documents on text terminals
@@ -217,8 +229,6 @@
               "nss"
               # Modern shell for the GitHub era
               "nushell"
-              # Cryptography and SSL/TLS Toolkit
-              "openssl@1.1"
               # PostgreSQL syntax beautifier
               "pgformatter"
               # General-purpose scripting language
@@ -243,12 +253,6 @@
               "starship"
               # Command-line tool for Stripe
               "stripe-cli"
-              # Formatting technology for Swift source code
-              "swift-format"
-              # Formatting tool for reformatting Swift code
-              "swiftformat"
-              # Tool to enforce Swift style and conventions
-              "swiftlint"
               # Log file highlighter
               "tailspin"
               # Tool Command Language
@@ -273,17 +277,14 @@
               "zsh-autosuggestions"
               # Fish shell like syntax highlighting for zsh
               "zsh-syntax-highlighting"
-              # Read-only implementation of ext4 for FUSE
-              "gromgit/fuse/ext4fuse-mac"
               # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
               "oven-sh/bun/bun"
-              # Google's robots.txt parser and matcher as a C++ library (compliant to C++11)
-              "peaceiris/tap/robots"
               # Supabase CLI
               "supabase/tap/supabase"
-              "tursodatabase/tap/turso"
             ];
             casks = [
+              # Privacy First browser
+              "brave-browser"
               # Cross platform SQL editor and database management app
               "beekeeper-studio"
               # Open source IDE for exploring and testing APIs
@@ -292,6 +293,8 @@
               "claude-code"
               # Free app that makes your Internet safer
               "cloudflare-warp"
+              # Discord is discord
+              "discord"
               # Photography workflow application and raw developer
               "darktable"
               # Multi-protocol API development platform
@@ -307,6 +310,9 @@
               "iterm2"
               # Electronics design automation suite
               "kicad"
+              "linear-linear"
+              # Privacy First VPN
+              "mullvad-vpn"
               # App to write, plan, collaborate, and get organised
               "notion"
               # Replacement for Docker Desktop
@@ -315,10 +321,22 @@
               "qbittorrent"
               # RAW photo processor
               "rawtherapee"
+              "raycast"
+              # Window management
+              "rectangle"
+              "Spotify"
+              "visual-studio-code"
               # All-in-one office suite
               "wpsoffice"
             ];
+            masApps = {
+              "Snap" = 418073146;
+              "Telegram" = 747648890;
+              "WhatsApp Messenger" = 310633997;
+            };
             enableZshIntegration = true;
+            onActivation.autoUpdate = false;
+            onActivation.cleanup = "zap";
           };
         };
     in
