@@ -205,21 +205,21 @@
       # Auto switch focus on mouse hover
       "autoraiseapp"
       # Privacy First browser
-      "brave-browser"
+      { name = "brave-browser"; greedy = true; }
       # Cross platform SQL editor and database management app
-      "beekeeper-studio"
+      { name = "beekeeper-studio"; greedy = true; }
       # Open source IDE for exploring and testing APIs
       "bruno"
       # Terminal-based AI coding assistant
-      "claude-code"
+      { name = "claude-code"; greedy = true; }
       # Free app that makes your Internet safer
-      "cloudflare-warp"
+      { name = "cloudflare-warp"; greedy = true; }
       # OpenAI codex agent
-      "codex"
+      { name = "codex"; greedy = true; }
       # Claude code parallelizer
-      "conductor"
+      { name = "conductor"; greedy = true; }
       # Discord is discord
-      "discord"
+      { name = "discord"; greedy = true; }
       # Photography workflow application and raw developer
       "darktable"
       # Multi-protocol API development platform
@@ -232,29 +232,29 @@
       # Menu bar application that displays the CPU speed limit due to thermal issues
       "hot"
       # Terminal emulator as alternative to Apple's Terminal app
-      "iterm2"
+      { name = "iterm2"; greedy = true; }
       # Electronics design automation suite
       "kicad"
-      "linear"
+      { name = "linear"; greedy = true; }
       # Lunar brightness manager
-      "lunar"
+      { name = "lunar"; greedy = true; }
       # Privacy First VPN
-      "mullvad-vpn"
+      { name = "mullvad-vpn"; greedy = true; }
       # App to write, plan, collaborate, and get organised
-      "notion"
+      { name = "notion"; greedy = true; }
       # Office Suite
       "onlyoffice"
       # Replacement for Docker Desktop
-      "orbstack"
+      { name = "orbstack"; greedy = true; }
       # Peer to peer Bitorrent client
       "qbittorrent"
       # RAW photo processor
       "rawtherapee"
-      "raycast"
+      { name = "raycast"; greedy = true; }
       # Window management
-      "rectangle"
-      "Spotify"
-      "visual-studio-code"
+      { name = "rectangle"; greedy = true; }
+      { name = "Spotify"; greedy = true; }
+      { name = "visual-studio-code"; greedy = true; }
       # # All-in-one office suite
       # "wpsoffice"
     ];
