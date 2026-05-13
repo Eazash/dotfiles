@@ -6,3 +6,6 @@ vim.opt.smarttab = true
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 0
+
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '·' }
+vim.opt.list = true

@@ -3,4 +3,4 @@
 -- set tabstop=4 softtabstop=0
 
 require("customizations")
-require("plugins")
+require("config.lazy")
