@@ -253,6 +253,11 @@
         name = "iterm2";
         greedy = true;
       }
+	  # Keyboard keymap customizer
+	  {
+		name = "karabiner-elements";
+		greedy = true;
+	  }
       {
         name = "linear";
         greedy = true;
