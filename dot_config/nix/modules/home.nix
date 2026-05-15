@@ -97,7 +97,7 @@
             FPATH="$(brew --prefix)/share/zsh/site-functions:''${FPATH}"
           fi
           eval "$(brew shellenv zsh)"
-          
+
           disable -r time
         '';
         zshConfigGeneral = lib.mkOrder 1000 ''

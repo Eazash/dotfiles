@@ -9,6 +9,9 @@
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    treefmt-nix.url = "github:numtide/treefmt-nix";
+    treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -18,8 +21,15 @@
       nixpkgs,
       nix-homebrew,
       home-manager,
+      treefmt-nix,
     }:
     let
+      system = "aarch64-darwin";
+      pkgs = nixpkgs.legacyPackages.${system};
+      treefmtEval = treefmt-nix.lib.evalModule pkgs {
+        projectRootFile = "flake.nix";
+        programs.nixfmt.enable = true;
+      };
       commonModules = [
         ./modules/packages.nix
         ./modules/zsh.nix
@@ -48,6 +58,8 @@
       ];
     in
     {
+      formatter.${system} = treefmtEval.config.build.wrapper;
+
       # Build darwin flake using:
       # $ sudo darwin-rebuild build --flake .#m1
       darwinConfigurations."m1" = nix-darwin.lib.darwinSystem {

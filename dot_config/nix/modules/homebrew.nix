@@ -205,25 +205,42 @@
       # Auto switch focus on mouse hover
       "autoraiseapp"
       # Privacy First browser
-      { name = "brave-browser"; greedy = true; }
+      {
+        name = "brave-browser";
+        greedy = true;
+      }
       # Cross platform SQL editor and database management app
-      { name = "beekeeper-studio"; greedy = true; }
-      # Open source IDE for exploring and testing APIs
-      "bruno"
+      {
+        name = "beekeeper-studio";
+        greedy = true;
+      }
       # Terminal-based AI coding assistant
-      { name = "claude-code"; greedy = true; }
+      {
+        name = "claude-code";
+        greedy = true;
+      }
       # Free app that makes your Internet safer
-      { name = "cloudflare-warp"; greedy = true; }
+      {
+        name = "cloudflare-warp";
+        greedy = true;
+      }
       # OpenAI codex agent
-      { name = "codex"; greedy = true; }
+      {
+        name = "codex";
+        greedy = true;
+      }
       # Claude code parallelizer
-      { name = "conductor"; greedy = true; }
+      {
+        name = "conductor";
+        greedy = true;
+      }
       # Discord is discord
-      { name = "discord"; greedy = true; }
+      {
+        name = "discord";
+        greedy = true;
+      }
       # Photography workflow application and raw developer
       "darktable"
-      # Multi-protocol API development platform
-      "firecamp"
       "font-hack-nerd-font"
       # Free and open-source image editor
       "gimp"
@@ -232,29 +249,52 @@
       # Menu bar application that displays the CPU speed limit due to thermal issues
       "hot"
       # Terminal emulator as alternative to Apple's Terminal app
-      { name = "iterm2"; greedy = true; }
-      # Electronics design automation suite
-      "kicad"
-      { name = "linear"; greedy = true; }
+      {
+        name = "iterm2";
+        greedy = true;
+      }
+      {
+        name = "linear";
+        greedy = true;
+      }
       # Lunar brightness manager
-      { name = "lunar"; greedy = true; }
+      {
+        name = "lunar";
+        greedy = true;
+      }
       # Privacy First VPN
-      { name = "mullvad-vpn"; greedy = true; }
-      # App to write, plan, collaborate, and get organised
-      { name = "notion"; greedy = true; }
+      {
+        name = "mullvad-vpn";
+        greedy = true;
+      }
       # Office Suite
       "onlyoffice"
       # Replacement for Docker Desktop
-      { name = "orbstack"; greedy = true; }
+      {
+        name = "orbstack";
+        greedy = true;
+      }
       # Peer to peer Bitorrent client
       "qbittorrent"
       # RAW photo processor
       "rawtherapee"
-      { name = "raycast"; greedy = true; }
+      {
+        name = "raycast";
+        greedy = true;
+      }
       # Window management
-      { name = "rectangle"; greedy = true; }
-      { name = "Spotify"; greedy = true; }
-      { name = "visual-studio-code"; greedy = true; }
+      {
+        name = "rectangle";
+        greedy = true;
+      }
+      {
+        name = "Spotify";
+        greedy = true;
+      }
+      {
+        name = "visual-studio-code";
+        greedy = true;
+      }
       # # All-in-one office suite
       # "wpsoffice"
     ];
